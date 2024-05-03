@@ -17,11 +17,11 @@ const MobileNav = () => {
       </SheetTrigger>
       <SheetContent className="space-y-3">
         <SheetTitle>
-          <span>Welcome to MERN-Eats.com</span>
+          <span>Dobrodošli na MERN-ePijaca.com</span>
         </SheetTitle>
         <Separator />
         <SheetDescription className="flex">
-          <Button className="flex-1 font-bold bg-green-500">Log In</Button>
+          <Button className="flex-1 font-bold bg-green-500">Prijavi se</Button>
         </SheetDescription>
       </SheetContent>
     </Sheet>
