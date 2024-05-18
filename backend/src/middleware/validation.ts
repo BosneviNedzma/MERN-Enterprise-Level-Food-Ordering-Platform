@@ -10,9 +10,9 @@ const handleValidationErrors = async (req:Request, res:Response, next:NextFuncti
 }
 
 export const validateMyUserRequest = [
-    body("name").isString().notEmpty().withMessage("Name must be a string"),
-    body("addressLine1").isString().notEmpty().withMessage("AddressLine1 must be a string"),
-    body("city").isString().notEmpty().withMessage("City must be a string"),
-    body("country").isString().notEmpty().withMessage("Country must be a string"),
+    body("name").isString().notEmpty().withMessage("Ime mora biti string."),
+    body("addressLine1").isString().notEmpty().withMessage("Adresa mora biti string."),
+    body("city").isString().notEmpty().withMessage("Grad mora biti string."),
+    body("country").isString().notEmpty().withMessage("Država mora biti string."),
     handleValidationErrors,
 ]

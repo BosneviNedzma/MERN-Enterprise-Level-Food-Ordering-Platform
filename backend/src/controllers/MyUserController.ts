@@ -16,7 +16,7 @@ const createCurrentUser = async (req: Request, res: Response) => {
     res.status(201).json(newUser.toObject());
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Error creating a user." });
+    res.status(500).json({ message: "Greška prilikom kreiranja korisnika." });
   }
 };
 
@@ -26,7 +26,7 @@ const updateCurrentUser = async (req: Request, res: Response) => {
     const user = await User.findById(req.userId);
 
     if(!user){
-      return res.status(404).json({message: "User not found"});
+      return res.status(404).json({message: "Korisnik nije nađen."});
     }
 
     user.name = name;
@@ -40,7 +40,7 @@ const updateCurrentUser = async (req: Request, res: Response) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).json({message:"Error updating a user."});
+    res.status(500).json({message:"Greška prilikom ažuriranja korisnika."});
   }
 }
 

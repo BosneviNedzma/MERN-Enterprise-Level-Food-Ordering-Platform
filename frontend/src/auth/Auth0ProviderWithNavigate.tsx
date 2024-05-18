@@ -14,7 +14,7 @@ const Auth0ProviderWithNavigate = ({ children }: Props) => {
   const audience = import.meta.env.VITE_AUTH0_AUDIENCE;
 
   if (!domain || !clientId || !redirectUri || !audience) {
-    throw new Error("Unable to initialize auth.");
+    throw new Error("Nije moguće inicijalizirati autorizaciju.");
   }
 
   const onRedirectCallback = () => {
