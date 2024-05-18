@@ -1,6 +1,21 @@
 import { Request, Response } from "express";
 import User from "../models/user";
 
+const getCurrentUser = async (req: Request, res: Response) => {
+  try {
+    const currentUser = await User.findOne({ _id: req.userId });
+
+    if(!currentUser){
+      return res.status(404).json({ message: "Korisnik nije pronađen."});
+    }
+
+    res.json(currentUser);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Nešto je pošlo u pogrešnom smjeru." });
+  }
+}
+
 const createCurrentUser = async (req: Request, res: Response) => {
   try {
     const { auth0Id } = req.body;
@@ -22,11 +37,11 @@ const createCurrentUser = async (req: Request, res: Response) => {
 
 const updateCurrentUser = async (req: Request, res: Response) => {
   try {
-    const {name, addressLine1, country, city} = req.body;
+    const { name, addressLine1, country, city } = req.body;
     const user = await User.findById(req.userId);
 
-    if(!user){
-      return res.status(404).json({message: "Korisnik nije nađen."});
+    if (!user) {
+      return res.status(404).json({ message: "Korisnik nije nađen." });
     }
 
     user.name = name;
@@ -40,11 +55,12 @@ const updateCurrentUser = async (req: Request, res: Response) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).json({message:"Greška prilikom ažuriranja korisnika."});
+    res.status(500).json({ message: "Greška prilikom ažuriranja korisnika." });
   }
 }
 
 export default {
+  getCurrentUser,
   createCurrentUser,
   updateCurrentUser,
 };
